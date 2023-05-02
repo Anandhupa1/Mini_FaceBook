@@ -6,7 +6,7 @@ import Online from '../online/Online';
 
 
 
-function HomeRightBar({profile}){
+function HomeRightBar(){
   
   return (
     <>
@@ -81,20 +81,32 @@ function  ProfileRightBar(){
 
 
 
-function Rightbar() {
+function Rightbar({profile}) {
 
+if(profile){ return (
 
+  <div className='rightBar' >
+    <div className="rightBarWrapper">
+    
+    <ProfileRightBar/>
+    
 
-  return (
-    <div className='rightBar' >
-      <div className="rightBarWrapper">
-      
-      <ProfileRightBar/>
-      
-
-      </div>
     </div>
-  )
+  </div>
+)}
+else{ return (
+
+  <div className='rightBar' >
+    <div className="rightBarWrapper">
+    
+    <HomeRightBar/>
+    
+
+    </div>
+  </div>
+)}
+
+ 
 }
 
 export default Rightbar
