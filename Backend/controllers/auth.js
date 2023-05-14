@@ -10,8 +10,10 @@ await jwt.verify(incToken, process.env.key, function(err, decoded) {
     if(err){
         res.status(401).json({error:"Please login | use refresh token if logined"})}
     else{
+       
     req.body.userId =decoded.userId;
     req.body.userEmail =decoded.userEmail;
+    
     
     next()
 

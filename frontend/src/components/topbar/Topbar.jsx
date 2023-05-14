@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './topbar.css'
 import { FaFacebookMessenger,FaUserAlt,FaRocketchat,FaBell,FaSearch } from "react-icons/fa";
 function Topbar() {
@@ -31,7 +32,10 @@ function Topbar() {
       <span className="topBarIconBadge">1</span>
       </div>
     </div>
-    <img src="https://github.com/safak/youtube/blob/react-social-ui/public/assets/person/1.jpeg?raw=true" alt="" className="topBarImg" />
+
+    <img src={JSON.parse(sessionStorage.getItem("user")).profilePic} alt="" className="topBarImg" />
+ 
+
     </div>
     </div>
   )

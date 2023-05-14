@@ -10,9 +10,9 @@ const userSchema = mongoose.Schema({
     following:{type:Array,default:[]},
     isAdmin : {type:Boolean,default:false},
     description:{type:String,max:50},
-    city : {type:String,max:50},
-    from : {type:String,max:50},
-    relationShip:{type:Number} 
+    city : {type:String,max:50,default:"not shared"},
+    from : {type:String,max:50,default:"not shared"},
+    relationShip:{type:Number,default:1} 
 
 
 

@@ -7,8 +7,9 @@ const { connection } = require('./config/connection');
 const { loginRouter } = require('./controllers/login');
 const { regRouter } = require('./controllers/register');
 const { postRouter } = require('./controllers/posts');
-
+const cors = require('cors')
 const app = express();
+app.use(cors())
 app.set('view engine', 'ejs');
 app.use(express.static("./views/public"))
 app.use(express.json());

@@ -25,14 +25,24 @@ res.send(500);
 }
 
 })
-//get a post
+//get all posts
 postRouter.get("/",async(req,res)=>{
     try{
     let data = await PostModel.find();
     res.send(data);
     }catch(err){console.log("posts | GETallposts ",err)}
 })
-//create a post by id
+
+//get all posts of a user
+postRouter.get("/myPosts/:userId",async(req,res)=>{
+    try{
+    let userId = req.params.userId || req.body.userId;
+    let data = await PostModel.find({userId});
+    res.send(data);
+    }catch(err){console.log("posts | GETallposts of a userbyid ",err)}
+})
+
+//create a single post by id
 postRouter.get("/:id",auth,async(req,res)=>{
     try{
     let data = await PostModel.findById(req.params.id);
@@ -77,7 +87,8 @@ postRouter.put("/:id/like",auth,async(req,res)=>{
         res.send(out)}
     else{
         await post.updateOne({$pull:{likes:req.body.userId}})
-        res.status(200).json("Post unliked ")
+        //let out = await PostModel.findById(postId);//userid removal checked
+        res.status(200).json({msg:"post unliked"})
     }
    
     }catch(err){console.log("posts | put ",err)}
@@ -85,10 +96,10 @@ postRouter.put("/:id/like",auth,async(req,res)=>{
 
 
 //timeline data 
-postRouter.get("/:id/timeline",auth,async(req,res)=>{
+postRouter.get("/timeline/:userId",async(req,res)=>{
     
    try{
-    let currentUser = await UserModel.findById(req.body.userId);
+    let currentUser = await UserModel.findById(req.params.userId);
     //users posts
     let userPosts = await PostModel.find({userId:req.body.userId});
     //res.send(userPosts)

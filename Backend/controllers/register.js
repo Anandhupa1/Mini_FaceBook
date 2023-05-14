@@ -14,7 +14,16 @@ regRouter.get("/",async(req,res)=>{
 //get individual User
 regRouter.get("/:id",async(req,res)=>{
     let data = await UserModel.findById(req.params.id);
+   // console.log(data,"data")
     res.send(data);
+})
+//get individual User | owners data by authToken
+regRouter.get("/owner/data",auth,async(req,res)=>{
+
+     let data = await UserModel.findById(req.body.userId);
+     //console.log(data,"data")
+     res.send(data);
+  
 })
 
 //post

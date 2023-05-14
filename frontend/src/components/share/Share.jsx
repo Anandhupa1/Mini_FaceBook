@@ -7,8 +7,8 @@ function Share() {
     <div className='share'>
         <div className="shareWrapper">
             <div className="shareTop">
-                <img className='shareProfileImg' src="https://github.com/safak/youtube/blob/react-social-ui/public/assets/person/4.jpeg?raw=true" alt="" />
-                <input placeholder="what's in your mind ?" className="shareInput" />
+                <img className='shareProfileImg' src={JSON.parse( sessionStorage.getItem("user")).profilePic} alt="" />
+                <input placeholder={JSON.parse( sessionStorage.getItem("user")).userName + " , Whats in your mind?"} className="shareInput" />
             </div>
             <hr className="shareHr" />
             <div className="shareBottom">
